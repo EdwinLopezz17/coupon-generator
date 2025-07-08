@@ -1,0 +1,13 @@
+/* Sidebar custom styles */
+[data-testid="stSidebar"] .stRadio label {
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    color: #ffffff; /* color por defecto en tema oscuro */
+}
+
+[data-testid="stSidebar"] .stRadio label:hover {
+    background-color: #f0f2f6;
+    color: #000000; /* color visible sobre fondo claro */
+}

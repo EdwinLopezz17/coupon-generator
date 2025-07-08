@@ -4,26 +4,23 @@ from views import home, upload, erp, generate_coupons
 st.set_page_config(
     page_title="Validador de Cupones ERP",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="expanded",
 )
+
+with open("styles.css") as f:
+    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 # Sidebar
-menu = st.sidebar.radio(
-    "Menú de navegación",
-    [
-        "🏠 Inicio",
-        "📂 Cargar Archivos",
-        "📝 Generar Archivo ERP",
-        "🎫 Generar Cupones PDF"
-    ]
-)
+st.sidebar.markdown("## Menú de navegación")
+
+menu_items = {
+    "Inicio": home.show,
+    "Cargar Archivos": upload.show,
+    "Generar Archivo ERP": erp.show,
+    "Generar Cupones PDF": generate_coupons.show,
+}
+
+selection = st.sidebar.radio("", list(menu_items.keys()))
 
 # Routing
-if menu == "🏠 Inicio":
-    home.show()
-elif menu == "📂 Cargar Archivos":
-    upload.show()
-elif menu == "📝 Generar Archivo ERP":
-    erp.show()
-elif menu == "🎫 Generar Cupones PDF":
-    generate_coupons.show()
+menu_items[selection]()
